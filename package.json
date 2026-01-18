@@ -1,36 +1,28 @@
+
 {
+  "name": "scheduling-app",
+  "version": "1.0.0",
+  "description": "Scheduling / To-Do List App",
+  "main": "app.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"(No tests configured)\" && exit 0"
+  },
   "dependencies": {
-    "bcryptjs": "^3.0.3",
-    "dayjs": "^1.11.19",
+    "bcryptjs": "^2.4.3",
+    "dayjs": "^1.11.13",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-session": "^1.18.2",
-    "helmet": "^8.1.0",
+    "helmet": "^7.1.0",
     "method-override": "^3.0.0",
-    "morgan": "^1.10.1",
-    "node-cron": "^4.2.1",
-    "uuid": "^13.0.0"
+    "morgan": "^1.10.0",
+    "node-cron": "^3.0.3",
+    "uuid": "^9.0.1"
   },
-  "name": "scheduling-app",
-  "version": "1.0.0",
-  "description": "Scheduling / To-Do List App with CI/CD for DevOps",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/24012285-KyalSinHtoo/scheduling-app.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/24012285-KyalSinHtoo/scheduling-app/issues"
-  },
-  "homepage": "https://github.com/24012285-KyalSinHtoo/scheduling-app#readme",
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.0.2"
   }
 }
