@@ -37,35 +37,33 @@
     <a class="btn" href="/add">+ Add Task</a>
   </header>
 
-  <main>
-    <% if(tasks.length === 0){ %>
-      <p>No tasks yet. Add one!</p>
-    <% } else { %>
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Priority</th>
-            <th>Due Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% tasks.forEach(task => { %>
-            <tr class="<%= task.priority.toLowerCase() %>">
-              <td><%= task.name %></td>
-              <td><%= task.priority %></td>
-              <td><%= task.due %></td>
-              <td>
-                <a class="edit" href="/edit/<%= task.id %>">Edit</a>
-                <a class="delete" href="/delete/<%= task.id %>">Delete</a>
-              </td>
-            </tr>
-          <% }); %>
-        </tbody>
-      </table>
-    <% } %>
-  </main>
+<main>
+  <% if (tasks.length === 0) { %>
+    <p>No tasks yet. Add one!</p>
+  <% } else { %>
+
+    <ul class="task-list">
+      <% tasks.forEach(task => { %>
+        <li class="task-card <%= task.priority.toLowerCase() %>">
+          
+          <div class="task-info">
+            <strong><%= task.name %></strong>
+            <span>Priority: <%= task.priority %></span>
+            <span>Due: <%= task.due %></span>
+          </div>
+
+          <div class="task-actions">
+            <a href="/edit/<%= task.id %>">Edit</a>
+            <a href="/delete/<%= task.id %>">Delete</a>
+          </div>
+
+        </li>
+      <% }); %>
+    </ul>
+
+  <% } %>
+</main>
+
 
   <nav class="navbar">
     <a href="/calendar" class="nav-item">🗓 Calendar</a>
