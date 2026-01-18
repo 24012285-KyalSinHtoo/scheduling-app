@@ -2,75 +2,74 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Dashboard</title>
   <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  
-<!-- Search & Priority Filter -->
-<form action="/" method="GET" class="task-search-form">
-  <input 
-    type="text" 
-    name="search" 
-    placeholder="Search tasks..." 
-    value="<%= typeof search !== 'undefined' ? search : '' %>">
-  
-  <select name="priority">
-    <option value="">All Priorities</option>
-    <option value="High" <%= priority === 'High' ? 'selected' : '' %>>High</option>
-    <option value="Medium" <%= priority === 'Medium' ? 'selected' : '' %>>Medium</option>
-    <option value="Low" <%= priority === 'Low' ? 'selected' : '' %>>Low</option>
-  </select>
+  <div class="container">
+    <header class="main-header">
+      <div class="title-group">
+        <h1>My Tasks</h1>
+        <p class="subtitle">Focus on what matters today</p>
+      </div>
+      <a class="btn-primary" href="/add"><span>+</span> New Task</a>
+    </header>
 
-  <input 
-    type="date" 
-    name="dueDate" 
-    value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
+    <section class="filter-bar">
+      <form action="/" method="GET" class="task-search-form">
+        <div class="input-group">
+          <input type="text" name="search" placeholder="Search tasks..." value="<%= typeof search !== 'undefined' ? search : '' %>">
+        </div>
+        
+        <div class="select-group">
+          <select name="priority">
+            <option value="">Priority: All</option>
+            <option value="High" <%= priority === 'High' ? 'selected' : '' %>>High</option>
+            <option value="Medium" <%= priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+            <option value="Low" <%= priority === 'Low' ? 'selected' : '' %>>Low</option>
+          </select>
+        </div>
 
-  <button type="submit">Filter</button>
-</form>
+        <div class="date-group">
+          <input type="date" name="dueDate" value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
+        </div>
 
+        <button type="submit" class="btn-filter">Apply Filters</button>
+      </form>
+    </section>
 
-  <header>
-    <h1>📋 My Tasks Today</h1>
-    <a class="btn" href="/add">+ Add Task</a>
-  </header>
-
-  <main>
-    <% if(tasks.length === 0){ %>
-      <p>No tasks yet. Add one!</p>
-    <% } else { %>
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Priority</th>
-            <th>Due Date</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <main class="content-area">
+      <% if(tasks.length === 0){ %>
+        <div class="empty-state">
+          <p>No tasks found. Time to relax!</p>
+        </div>
+      <% } else { %>
+        <div class="task-grid">
           <% tasks.forEach(task => { %>
-            <tr class="<%= task.priority.toLowerCase() %>">
-              <td><%= task.name %></td>
-              <td><%= task.priority %></td>
-              <td><%= task.due %></td>
-              <td>
+            <div class="task-card priority-<%= task.priority.toLowerCase() %>">
+              <div class="task-info">
+                <span class="badge"><%= task.priority %></span>
+                <h3><%= task.name %></h3>
+                <p class="due-date">📅 <%= task.due %></p>
+              </div>
+              <div class="task-actions">
                 <a class="edit" href="/edit/<%= task.id %>">Edit</a>
                 <a class="delete" href="/delete/<%= task.id %>">Delete</a>
-              </td>
-            </tr>
+              </div>
+            </div>
           <% }); %>
-        </tbody>
-      </table>
-    <% } %>
-  </main>
+        </div>
+      <% } %>
+    </main>
+  </div>
 
   <nav class="navbar">
-    <a href="/calendar" class="nav-item">🗓 Calendar</a>
-    <a href="/add" class="nav-add">+</a>
-    <a href="/" class="nav-item active">📋 Tasks</a>
+    <a href="/calendar" class="nav-item">🗓</a>
+    <a href="/add" class="nav-fab">+</a>
+    <a href="/" class="nav-item active">📋</a>
   </nav>
 
 </body>
