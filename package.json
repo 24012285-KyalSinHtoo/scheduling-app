@@ -1,0 +1,25 @@
+{
+  "name": "scheduling-app",
+  "version": "1.0.0",
+  "description": "Scheduling / To-Do List App with CI/CD for DevOps",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/24012285-KyalSinHtoo/scheduling-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/24012285-KyalSinHtoo/scheduling-app/issues"
+  },
+  "homepage": "https://github.com/24012285-KyalSinHtoo/scheduling-app#readme",
+  "dependencies": {
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
+  }
+}
