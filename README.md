@@ -68,18 +68,6 @@ This is a scheduling / to-do list application designed to help users manage task
 - Encourages collaboration, accountability, and reduces merge conflicts
 
 ## Project Files
-
-### `app.js`
-- Main Express server file
-- Configures routes for:
-  - `/` → index page showing tasks
-  - `/add` → form to add tasks
-  - `/edit/:id` → form to edit tasks
-  - `/delete/:id` → remove tasks
-  - `/tasks` → optional page listing all tasks
-- Stores tasks in a temporary array (for prototype)
-- Handles form data parsing and redirects
-
 ### `views/` Folder
 Contains EJS templates for rendering pages:
 
@@ -92,4 +80,3 @@ Contains EJS templates for rendering pages:
 ### `public/` Folder (optional)
 - Place for static files such as CSS, client-side JS, and images
 
-test
