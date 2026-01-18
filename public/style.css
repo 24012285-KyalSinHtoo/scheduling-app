@@ -246,3 +246,35 @@ tr.low {
 .task-list li a:hover {
   text-decoration: underline;
 }
+
+
+/* SEARCH BAR */
+.task-search-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.task-search-form input,
+.task-search-form select,
+.task-search-form button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+}
+
+.task-search-form button {
+  background: linear-gradient(135deg, #60a5fa, #38bdf8);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-search-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(59, 130, 246, 0.35);
+}

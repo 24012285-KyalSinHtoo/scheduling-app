@@ -17,11 +17,6 @@ let tasks = [
   { id: 2, name: "Finish homework", priority: "Medium", due: "2026-01-18" }
 ];
 
-// Landing page - dashboard
-app.get('/', (req, res) => {
-  res.render('index', { tasks: tasks });
-});
-
 // Add task page
 app.get('/add', (req, res) => {
   res.render('addTask');
@@ -67,10 +62,29 @@ app.listen(port, () => {
 });
 
 
-
 // Calendar backend
 app.get('/calendar', (req, res) => {
   res.render('calendarView', { tasks: tasks }); // use global tasks array
 });
 
 
+// SEARCH BAR backend
+app.get('/', (req, res) => {
+  let { search, priority } = req.query;
+
+  let filteredTasks = tasks; // tasks is your array or database result
+
+  if (search) {
+    filteredTasks = filteredTasks.filter(task =>
+      task.name.toLowerCase().includes(search.toLowerCase())
+    );
+  }
+
+  if (priority) {
+    filteredTasks = filteredTasks.filter(task =>
+      task.priority === priority
+    );
+  }
+
+  res.render('index', { tasks: filteredTasks, search, priority });
+});
