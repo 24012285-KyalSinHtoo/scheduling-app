@@ -2,7 +2,6 @@
 
 ## App Name Ideas
 - TimeKeeper
-- ChronoTrack
 - TaskTide
 
 ## Application Overview
@@ -11,10 +10,12 @@ This is a scheduling / to-do list application designed to help users manage task
 ## Core Features
 - Task creation, editing, and deletion
 - Priority markers (High / Medium / Low) with sorting
-- Alarm / reminder for overdue or incomplete tasks
+- Alarm / reminder for overdue or incomplete tasks (Not yet)
 - Calendar view for task scheduling (optional extension)
 - Daily task view (tasks due today)
 - Task search functionality
+- Task filter function
+
 
 ## Objectives
 1. **Prevent Broken Functionality**
