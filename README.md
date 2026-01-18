@@ -14,6 +14,8 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Daily task view (tasks due today)
 - Task search functionality (ADDED)
 - Task filter function (ADDED)
+- Mark completed tasks as completed with a tick
+
 - Nav Bar (ADDED)
 - A making account feature? (optional)
 - Task completion tick animation (optional)
