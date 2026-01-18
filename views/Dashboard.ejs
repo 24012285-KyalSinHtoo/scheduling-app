@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script defer src="/static/client.js"></script>
+</head>
+<body>
+<nav class="nav">
+  <div class="brand">Scheduler</div>
+  <div class="spacer"></div>
+  <form method="POST" action="/logout"><button class="btn ghost" type="submit">Logout</button></form>
+</nav>
+
+<main class="container">
+  <% if (flash) { %><div class="alert <%= flash.type %>"><%= flash.message %></div><% } %>
+
+  <header class="page-header">
+    <h2>Your Tasks</h2>
+    <a class="btn primary" href="/tasks/add">+ Add Task</a>
+  </header>
+
+  <form class="toolbar" method="GET" action="/dashboard">
+    <input type="text" name="search" placeholder="Search tasks..." value="<%= query.search || '' %>"/>
+    <select name="sort">
+      <option value="priority" <%= query.sort==='priority'?'selected':'' %>>Sort: Priority</option>
+      <option value="due" <%= query.sort==='due'?'selected':'' %>>Sort: Due Date</option>
+      <option value="created" <%= query.sort==='created'?'selected':'' %>>Sort: Created</option>
+    </select>
+    <select name="view">
+      <option value="" <%= !query.view?'selected':'' %>>View: All</option>
+      <option value="today" <%= query.view==='today'?'selected':'' %>>View: Today</option>
+    </select>
+    <button class="btn" type="submit">Apply</button>
+  </form>
+
+  <section class="grid">
+    <% if (tasks.length === 0) { %>
+      <p class="muted">No tasks to show.</p>
+    <% } %>
+    <% tasks.forEach(t => { %>
+      <article class="card task <%= t.overdue ? 'overdue' : '' %> <%= t.completed ? 'done' : '' %>">
+        <div class="task-head">
+          <h3><%= t.title %></h3>
+          <span class="pill <%= t.priority %>"><%= t.priority %></span>
+        </div>
+        <% if (t.description) { %><p class="desc"><%= t.description %></p><% } %>
+        <div class="meta">
+          <% if (t.dueDate) { %>
+            <span>Due: <span class="due" data-date="<%= t.dueDate %>"></span></span>
+          <% } else { %>
+            <span class="muted">No due date</span>
+          <% } %>
+          <% if (t.overdue && !t.completed) { %><span class="alarm">Overdue</span><% } %>
+        </div>
+        <div class="actions">
+          <form method="POST" action="/tasks/<%= t.id %>/toggle">
+            <button class="btn <%= t.completed ? '' : 'primary' %>" type="submit">
+              <%= t.completed ? 'Mark Incomplete' : 'Mark Complete' %>
+            </button>
+          </form>
+          <a class="btn" href="/tasks/<%= t.id %>/edit">Edit</a>
+          <form method="POST" action="/tasks/<%= t.id %>/delete">
+            <button class="btn danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+    <% }) %>
+  </section>
+</main>
+</body>
+</html>

@@ -1,12 +1,20 @@
 {
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dayjs": "^1.11.19",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "method-override": "^3.0.0",
+    "morgan": "^1.10.1",
+    "node-cron": "^4.2.1",
+    "uuid": "^13.0.0"
+  },
   "name": "scheduling-app",
   "version": "1.0.0",
   "description": "Scheduling / To-Do List App with CI/CD for DevOps",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,11 +30,7 @@
     "url": "https://github.com/24012285-KyalSinHtoo/scheduling-app/issues"
   },
   "homepage": "https://github.com/24012285-KyalSinHtoo/scheduling-app#readme",
-  "dependencies": {
-    "connect-flash": "^0.1.1",
-    "ejs": "^4.0.1",
-    "express": "^5.2.1",
-    "express-session": "^1.18.2"
-  },
-  "devDependencies": {}
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
 }
