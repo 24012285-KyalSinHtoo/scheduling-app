@@ -35,16 +35,6 @@ This is a scheduling application designed to help users manage tasks efficiently
   - Reducing syntax and logic errors
 - Accelerates development and supports continuous integration
 
-## Scalability, Availability, and Security
-- **Scalability:** Multiple Docker containers; orchestration handles load
-- **Availability:** Failed containers automatically restarted
-- **Security:** Only tested code is merged; branch protection enabled; credentials stored securely
-
-## Team Roles & Skills
-- **Backend Developer:** Implements task logic and alarm functionality
-- **Frontend Developer:** Designs task views, priority indicators, and calendar UI
-
-
 ## Strategy
 - Features divided based on expertise
 - All code changes must pass CI checks before merging
