@@ -7,23 +7,30 @@
 </head>
 <body>
 
-  <!-- Search & Priority Filter -->
-  <form action="/" method="GET" class="task-search-form">
-    <input 
-      type="text" 
-      name="search" 
-      placeholder="Search tasks..." 
-      value="<%= typeof search !== 'undefined' ? search : '' %>">
-    
-    <select name="priority">
-      <option value="">All Priorities</option>
-      <option value="High" <%= priority === 'High' ? 'selected' : '' %>>High</option>
-      <option value="Medium" <%= priority === 'Medium' ? 'selected' : '' %>>Medium</option>
-      <option value="Low" <%= priority === 'Low' ? 'selected' : '' %>>Low</option>
-    </select>
+  
+<!-- Search & Priority Filter -->
+<form action="/" method="GET" class="task-search-form">
+  <input 
+    type="text" 
+    name="search" 
+    placeholder="Search tasks..." 
+    value="<%= typeof search !== 'undefined' ? search : '' %>">
+  
+  <select name="priority">
+    <option value="">All Priorities</option>
+    <option value="High" <%= priority === 'High' ? 'selected' : '' %>>High</option>
+    <option value="Medium" <%= priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+    <option value="Low" <%= priority === 'Low' ? 'selected' : '' %>>Low</option>
+  </select>
 
-    <button type="submit">Filter</button>
-  </form>
+  <input 
+    type="date" 
+    name="dueDate" 
+    value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
+
+  <button type="submit">Filter</button>
+</form>
+
 
   <header>
     <h1>📋 My Tasks Today</h1>

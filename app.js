@@ -70,7 +70,7 @@ app.get('/calendar', (req, res) => {
 
 // SEARCH BAR backend
 app.get('/', (req, res) => {
-  let { search, priority } = req.query;
+  let { search, priority, dueDate } = req.query;
 
   let filteredTasks = tasks; // tasks is your array or database result
 
@@ -86,5 +86,11 @@ app.get('/', (req, res) => {
     );
   }
 
-  res.render('index', { tasks: filteredTasks, search, priority });
+  if (dueDate) {
+    filteredTasks = filteredTasks.filter(task =>
+      task.due === dueDate
+    );
+  }
+
+  res.render('index', { tasks: filteredTasks, search, priority, dueDate });
 });

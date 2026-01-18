@@ -10,10 +10,10 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task creation, editing, and deletion (ADDED)
 - Priority markers (High / Medium / Low) with sorting (ADDED)
 - Alarm / reminder for overdue or incomplete tasks
-- Calendar view for task scheduling
+- Calendar view for task scheduling (ADDED)
 - Daily task view (tasks due today)
-- Task search functionality
-- Task filter function
+- Task search functionality (ADDED)
+- Task filter function (ADDED)
 - Home screen before everything starts (optional)
 - Nav Bar
 
