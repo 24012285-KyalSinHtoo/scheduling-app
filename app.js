@@ -65,3 +65,12 @@ app.get('/tasks', (req, res) => {
 app.listen(port, () => {
   console.log(`App running at http://localhost:${port}`);
 });
+
+
+
+// Calendar backend
+app.get('/calendar', (req, res) => {
+  res.render('calendarView', { tasks: tasks }); // use global tasks array
+});
+
+

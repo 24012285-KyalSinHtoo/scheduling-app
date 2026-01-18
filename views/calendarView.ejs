@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calendar View</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Calendar Container */
+    .calendar {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      background: rgba(255,255,255,0.95);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .calendar-header h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .calendar-header button {
+      background: linear-gradient(135deg, #60a5fa, #38bdf8);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .calendar-header button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(59, 130, 246, 0.35);
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .calendar-grid div {
+      padding: 12px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .calendar-grid div:hover {
+      background: rgba(96, 165, 250, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .calendar-grid .today {
+      border: 2px solid #2563eb;
+      font-weight: bold;
+    }
+
+    /* Task Dropdown */
+    .task-dropdown {
+      max-width: 800px;
+      margin: 10px auto 40px;
+      background: rgba(255,255,255,0.95);
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .task-dropdown h3 {
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+
+    .task-dropdown ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .task-dropdown ul li {
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: #dbeafe;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+    }
+
+    .task-dropdown ul li span.priority {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📅 Calendar View</h1>
+    <a class="btn" href="/">📋 Tasks</a>
+  </header>
+
+  <div class="calendar">
+    <div class="calendar-header">
+      <button id="prevMonth">&lt;</button>
+      <h2 id="monthYear"></h2>
+      <button id="nextMonth">&gt;</button>
+    </div>
+    <div class="calendar-grid" id="calendarGrid">
+      <!-- Dates will be generated here by JS -->
+    </div>
+  </div>
+
+  <div class="task-dropdown" id="taskDropdown" style="display:none;">
+    <h3 id="selectedDate">Tasks for:</h3>
+    <ul id="taskList">
+      <!-- Tasks for the selected date will show here -->
+    </ul>
+  </div>
+
+  <script>
+    const tasks = <%- JSON.stringify(tasks) %>; // pass from server: array of {name, due, priority}
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+
+    let currentDate = new Date();
+    let selectedYear = currentDate.getFullYear();
+    let selectedMonth = currentDate.getMonth();
+
+    const monthYearEl = document.getElementById('monthYear');
+    const calendarGrid = document.getElementById('calendarGrid');
+    const taskDropdown = document.getElementById('taskDropdown');
+    const taskList = document.getElementById('taskList');
+    const selectedDateEl = document.getElementById('selectedDate');
+
+    function renderCalendar(year, month) {
+      calendarGrid.innerHTML = '';
+      monthYearEl.textContent = `${monthNames[month]} ${year}`;
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const lastDate = new Date(year, month + 1, 0).getDate();
+
+      // Empty slots for first day
+      for (let i = 0; i < firstDay; i++) {
+        const emptyCell = document.createElement('div');
+        calendarGrid.appendChild(emptyCell);
+      }
+
+      // Days
+      for (let day = 1; day <= lastDate; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.textContent = day;
+
+        // Highlight today
+        const today = new Date();
+        if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+          dayCell.classList.add('today');
+        }
+
+        // On click, show tasks
+        dayCell.addEventListener('click', () => {
+          showTasksForDate(year, month, day);
+        });
+
+        calendarGrid.appendChild(dayCell);
+      }
+    }
+
+    function showTasksForDate(year, month, day) {
+      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const tasksForDate = tasks.filter(task => task.due === dateStr);
+
+      selectedDateEl.textContent = `Tasks for ${dateStr}`;
+      taskList.innerHTML = '';
+
+      if (tasksForDate.length === 0) {
+        taskList.innerHTML = '<li>No tasks for this date</li>';
+      } else {
+        tasksForDate.forEach(task => {
+          const li = document.createElement('li');
+          li.textContent = task.name;
+          const priority = document.createElement('span');
+          priority.classList.add('priority');
+          priority.textContent = ` (${task.priority})`;
+          li.appendChild(priority);
+          taskList.appendChild(li);
+        });
+      }
+
+      taskDropdown.style.display = 'block';
+      taskDropdown.scrollIntoView({behavior:'smooth'});
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      selectedMonth--;
+      if (selectedMonth < 0) {
+        selectedMonth = 11;
+        selectedYear--;
+      }
+      renderCalendar(selectedYear, selectedMonth);
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      selectedMonth++;
+      if (selectedMonth > 11) {
+        selectedMonth = 0;
+        selectedYear++;
+      }
+      renderCalendar(selectedYear, selectedMonth);
+    });
+
+    renderCalendar(selectedYear, selectedMonth);
+  </script>
+</body>
+</html>
