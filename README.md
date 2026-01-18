@@ -1,11 +1,10 @@
 # Scheduling / To-Do List App with CI/CD for DevOps
-
 ## App Name Ideas
 - TimeKeeper
 - TaskTide
 
 ## Application Overview
-This is a scheduling / to-do list application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
+This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
 ## Core Features
 - Task creation, editing, and deletion
@@ -15,22 +14,6 @@ This is a scheduling / to-do list application designed to help users manage task
 - Daily task view (tasks due today)
 - Task search functionality
 - Task filter function
-
-
-## Objectives
-1. **Prevent Broken Functionality**
-   - Ensures tasks are correctly created, edited, and deleted
-   - Priority values are assigned, sorted, and displayed correctly
-   - Alarm and reminder logic triggers only when tasks are overdue
-
-2. **Improve Development Speed**
-   - Automated tests run after every GitHub commit
-   - Errors are detected immediately during integration
-   - Shortens troubleshooting time
-
-3. **Improve Application Reliability**
-   - Only code passing all automated tests is merged
-   - Ensures a stable and reliable release process
 
 ## CI/CD Overview
 - **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
@@ -56,10 +39,9 @@ This is a scheduling / to-do list application designed to help users manage task
 - **Security:** Only tested code is merged; branch protection enabled; credentials stored securely
 
 ## Team Roles & Skills
-- **DevOps Engineer:** Configures CI/CD pipelines and manages container orchestration
 - **Backend Developer:** Implements task logic and alarm functionality
 - **Frontend Developer:** Designs task views, priority indicators, and calendar UI
-- **QA / Tester:** Develops automated test cases and validates CI pipeline results
+
 
 ## Strategy
 - Features divided based on expertise
