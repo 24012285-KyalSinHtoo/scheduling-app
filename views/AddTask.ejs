@@ -1,14 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Task</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>✏️ Edit Task</h1>
+    <a class="btn" href="/">← Back</a>
+  </header>
+  <main>
+    <form action="/edit/<%= task.id %>" method="POST" class="task-form">
+      <label>Task Name</label>
+      <input type="text" name="name" value="<%= task.name %>" required>
 
-<div class="container">
-    <h2>Add Task</h2>
-    /add
-        <input name="title" placeholder="Task title">
-        <select name="priority">
-            <option>High</option>
-            <option>Medium</option>
-            <option>Low</option>
-        </select>
-        <input type="date" name="due">
-        <button class="btn">Save</button>
+      <label>Priority</label>
+      <select name="priority">
+        <option <%= task.priority === 'High' ? 'selected' : '' %>>High</option>
+        <option <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+        <option <%= task.priority === 'Low' ? 'selected' : '' %>>Low</option>
+      </select>
+
+      <label>Due Date</label>
+      <input type="date" name="due" value="<%= task.due %>" required>
+
+      <button type="submit" class="btn">Update Task</button>
     </form>
-</div>
+  </main>
+</body>
+</html>

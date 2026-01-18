@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Tasks</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>📂 Task List</h1>
+    <a class="btn" href="/">← Dashboard</a>
+  </header>
+  <main>
+    <% if(tasks.length === 0){ %>
+      <p>No tasks to display.</p>
+    <% } else { %>
+      <ul class="task-list">
+        <% tasks.forEach(task => { %>
+          <li class="<%= task.priority.toLowerCase() %>">
+            <strong><%= task.name %></strong> - <%= task.priority %> - <%= task.due %>
+            <a class="edit" href="/edit/<%= task.id %>">Edit</a>
+            <a class="delete" href="/delete/<%= task.id %>">Delete</a>
+          </li>
+        <% }); %>
+      </ul>
+    <% } %>
+  </main>
+</body>
+</html>

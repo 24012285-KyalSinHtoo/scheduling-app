@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <h1>📋 My Tasks</h1>
+    <a class="btn" href="/add">+ Add Task</a>
+  </header>
+  <main>
+    <% if(tasks.length === 0){ %>
+      <p>No tasks yet. Add one!</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% tasks.forEach(task => { %>
+            <tr class="<%= task.priority.toLowerCase() %>">
+              <td><%= task.name %></td>
+              <td><%= task.priority %></td>
+              <td><%= task.due %></td>
+              <td>
+                <a class="edit" href="/edit/<%= task.id %>">Edit</a>
+                <a class="delete" href="/delete/<%= task.id %>">Delete</a>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+</body>
+</html>
