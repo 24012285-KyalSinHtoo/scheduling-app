@@ -94,3 +94,10 @@ app.get('/', (req, res) => {
 
   res.render('index', { tasks: filteredTasks, search, priority, dueDate });
 });
+
+//Mark completed tasks as completed with a tick
+app.post('/complete/:id', (req, res) => {
+  const task = tasks.find(t => t.id == req.params.id);
+  task.completed = !task.completed;
+  res.redirect('/');
+});
