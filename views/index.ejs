@@ -6,6 +6,89 @@
   <meta charset="UTF-8">
   <title>Task Dashboard</title>
   <link rel="stylesheet" href="/style.css">
+
+
+ <!-- ADDED: Glassmorphism + Neon UI Enhancements -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, #fce4ec, #e8f5e9);
+    }
+
+    /* Glass Card Base */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    /* Card Hover Effect */
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: #e91e63;
+      box-shadow: 0 20px 45px rgba(233, 30, 99, 0.25);
+    }
+
+    /* Gradient Solid Buttons */
+    .btn,
+    .nav-add {
+      background: linear-gradient(45deg, #4caf50, #e91e63);
+      color: white;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      padding: 12px 22px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover,
+    .nav-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+    }
+
+    /* Outline Buttons */
+    .edit {
+      border: 2px solid #4caf50;
+      padding: 6px 12px;
+      color: #4caf50;
+      transition: all 0.3s ease;
+    }
+
+    .edit:hover {
+      background: #4caf50;
+      color: white;
+    }
+
+    .delete {
+      border: 2px solid #e53935;
+      padding: 6px 12px;
+      color: #e53935;
+      transition: all 0.3s ease;
+    }
+
+    .delete:hover {
+      background: #e53935;
+      color: white;
+    }
+
+    /* Navbar Hover Borders */
+    .navbar a {
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .navbar a:hover {
+      border-color: #e91e63;
+      background: rgba(233, 30, 99, 0.15);
+    }
+
 </head>
 
 <body>
