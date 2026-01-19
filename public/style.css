@@ -98,9 +98,6 @@ body {
   font-size: 32px;
   color: #1e3a8a;
 
-  background: linear-gradient(135deg, #dbeafe, #ffffff, #cffafe);
-  border-radius: 50%;
-
   box-shadow:
     0 0 22px rgba(56, 189, 248, 0.55),
     0 14px 32px rgba(56, 189, 248, 0.4);
