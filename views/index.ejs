@@ -1,6 +1,7 @@
 <!-- Kyal Sin Htoo -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Task Dashboard</title>
@@ -11,23 +12,17 @@
 
   <!-- Search & Filters -->
   <form action="/" method="GET" class="task-search-form">
-    <input
-      type="text"
-      name="search"
-      placeholder="Search tasks..."
+    <input type="text" name="search" placeholder="Search tasks..."
       value="<%= typeof search !== 'undefined' ? search : '' %>">
 
     <select name="priority">
       <option value="">All Priorities</option>
-      <option value="High" <%= priority === 'High' ? 'selected' : '' %>>High</option>
-      <option value="Medium" <%= priority === 'Medium' ? 'selected' : '' %>>Medium</option>
-      <option value="Low" <%= priority === 'Low' ? 'selected' : '' %>>Low</option>
+      <option value="High" <%=priority==='High' ? 'selected' : '' %>>High</option>
+      <option value="Medium" <%=priority==='Medium' ? 'selected' : '' %>>Medium</option>
+      <option value="Low" <%=priority==='Low' ? 'selected' : '' %>>Low</option>
     </select>
 
-    <input
-      type="date"
-      name="dueDate"
-      value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
+    <input type="date" name="dueDate" value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
 
     <button type="submit">Filter</button>
   </form>
@@ -40,54 +35,58 @@
 
   <!-- Main Content -->
   <main>
-    <% if (tasks.length === 0) { %>
+    <% if (tasks.length===0) { %>
       <p>No tasks yet. Add one!</p>
-    <% } else { %>
+      <% } else { %>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Task</th>
-            <th>Priority</th>
-            <th>Due Date</th>
-            <th>Actions</th>
-            <th>Done</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% tasks.forEach(task => { %>
-            <tr class="<%= task.priority.toLowerCase() %>">
-
-              <td><%= task.name %></td>
-
-              <td><%= task.priority %></td>
-
-              <td><%= task.due %></td>
-
-              <td>
-                <a class="edit" href="/edit/<%= task.id %>">Edit</a>
-                <a class="delete" href="/delete/<%= task.id %>">Delete</a>
-              </td>
-
-              <td>
-                <div
-                  class="custom-checkbox"
-                  onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
-
-                  <% if (task.completed) { %>
-                    <span class="tick">✓</span>
-                  <% } %>
-
-                </div>
-              </td>
-
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Priority</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+              <th>Done</th>
             </tr>
-          <% }); %>
-        </tbody>
-      </table>
+          </thead>
 
-    <% } %>
+          <tbody>
+            <% tasks.forEach(task=> { %>
+              <tr class="<%= task.priority.toLowerCase() %>">
+
+                <td>
+                  <%= task.name %>
+                </td>
+
+                <td>
+                  <%= task.priority %>
+                </td>
+
+                <td>
+                  <%= task.due %>
+                </td>
+
+                <td>
+                  <a class="edit" href="/edit/<%= task.id %>">Edit</a>
+                  <a class="delete" href="/delete/<%= task.id %>">Delete</a>
+                </td>
+
+                <td>
+                  <div class="custom-checkbox" onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
+
+                    <% if (task.completed) { %>
+                      <span class="tick">✓</span>
+                      <% } %>
+
+                  </div>
+                </td>
+
+              </tr>
+              <% }); %>
+          </tbody>
+        </table>
+
+        <% } %>
   </main>
 
   <!-- Bottom Navigation -->
@@ -110,7 +109,7 @@
   </div>
 
   <!-- Script --> <!-- Alicia-->
-  <script>
+ <script>
     let activeTaskId = null;
 
     function handleTaskCheck(taskId, isCompleted) {
@@ -130,6 +129,32 @@
       window.location.href = '/complete/' + activeTaskId;
       document.getElementById('taskCompletionModal').style.display = 'none';
     };
+  </script>
+
+  <div id="dueReminderPopup" class="due-notification-box">
+    <span id="reminderText"></span>
+  </div>
+
+  <script>
+    // Alicia: Reverted to Test Mode for verification
+    (function() {
+      const popup = document.getElementById('dueReminderPopup');
+      const textSpan = document.getElementById('reminderText');
+      
+      if (popup && textSpan) {
+        // This version shows the box regardless of the date
+        textSpan.innerText = "TEST MODE: Your notification is working!";
+        
+        popup.style.display = 'block';
+        popup.style.opacity = '1';
+
+        // Disappears after 45 seconds
+        setTimeout(() => {
+          popup.style.opacity = '0';
+          setTimeout(() => { popup.style.display = 'none'; }, 500);
+        }, 45000); 
+      }
+    })();
   </script>
 
 </body>

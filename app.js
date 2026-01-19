@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 // Temporary task storage
 let tasks = [
   { id: 1, name: "Buy groceries", priority: "High", due: "2026-01-19" },
-  { id: 2, name: "Finish homework", priority: "Medium", due: "2026-01-18" }
+  { id: 2, name: "Finish homework", priority: "Medium", due: "2026-01-22" }
 ];
 
 // Add task page
@@ -26,7 +26,7 @@ app.get('/add', (req, res) => {
 // Add task POST
 app.post('/add', (req, res) => {
   const { name, priority, due } = req.body;
-  const newTask = { id: tasks.length + 1, name, priority, due };
+  const newTask = { id: tasks.length + 1, name, priority, due, completed: false };
   tasks.push(newTask);
   res.redirect('/');
 });

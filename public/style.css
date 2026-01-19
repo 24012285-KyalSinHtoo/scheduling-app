@@ -8,13 +8,11 @@
 
 /* BODY */
 body {
-  background: linear-gradient(
-    180deg,
-    #d3f2f4,
-    #eef2ff,
-    #d6edfd,
-    #fcf5e1
-  );
+  background: linear-gradient(180deg,
+      #d3f2f4,
+      #eef2ff,
+      #d6edfd,
+      #fcf5e1);
 
   color: #334155;
   min-height: 100vh;
@@ -36,12 +34,10 @@ body {
   padding: 14px 0;
 
   backdrop-filter: blur(10px);
-  background: linear-gradient(
-    135deg,
-    rgba(210, 231, 255, 0.9),
-    rgba(247, 246, 193, 0.9),
-    rgba(222, 245, 255, 0.9)
-  );
+  background: linear-gradient(135deg,
+      rgba(210, 231, 255, 0.9),
+      rgba(247, 246, 193, 0.9),
+      rgba(222, 245, 255, 0.9));
 
   border-top: 1px solid rgba(148, 163, 184, 0.25);
 
@@ -112,12 +108,10 @@ body {
 
   color: #1e3a8a;
 
-  background: linear-gradient(
-    135deg,
-    #dbeafe,
-    #ffffff,
-    #cffafe
-  );
+  background: linear-gradient(135deg,
+      #dbeafe,
+      #ffffff,
+      #cffafe);
 
   border-radius: 50%;
 
@@ -185,7 +179,8 @@ table,
 }
 
 
-th, td {
+th,
+td {
   padding: 14px 18px;
   text-align: left;
 }
@@ -327,7 +322,8 @@ body {
   background-color: var(--bg);
   color: var(--text-main);
   margin: 0;
-  padding-bottom: 80px; /* Space for navbar */
+  padding-bottom: 80px;
+  /* Space for navbar */
 }
 
 .container {
@@ -344,8 +340,16 @@ body {
   margin-bottom: 2rem;
 }
 
-h1 { font-weight: 600; margin: 0; font-size: 1.8rem; }
-.subtitle { color: var(--text-sub); margin: 0.2rem 0 0 0; }
+h1 {
+  font-weight: 600;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: var(--text-sub);
+  margin: 0.2rem 0 0 0;
+}
 
 .btn-primary {
   background: var(--primary);
@@ -372,7 +376,8 @@ h1 { font-weight: 600; margin: 0; font-size: 1.8rem; }
   gap: 10px;
 }
 
-input, select {
+input,
+select {
   padding: 0.6rem;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -412,9 +417,17 @@ input, select {
   display: inline-block;
 }
 
-.priority-high { border-left: 5px solid var(--high); }
-.priority-medium { border-left: 5px solid var(--medium); }
-.priority-low { border-left: 5px solid var(--low); }
+.priority-high {
+  border-left: 5px solid var(--high);
+}
+
+.priority-medium {
+  border-left: 5px solid var(--medium);
+}
+
+.priority-low {
+  border-left: 5px solid var(--low);
+}
 
 /* Bottom Nav */
 .navbar {
@@ -445,6 +458,7 @@ input, select {
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
 }
 
+/*alicia*/
 /* Checkbox and Modal Styles */
 .custom-checkbox {
   width: 24px;
@@ -467,8 +481,10 @@ input, select {
 .modal-overlay {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   justify-content: center;
@@ -498,5 +514,34 @@ input, select {
   font-weight: bold;
 }
 
-.delete-btn { background-color: #ff4757; color: white; }
-.keep-btn { background-color: #3498db; color: white; }
+.delete-btn {
+  background-color: #ff4757;
+  color: white;
+}
+
+.keep-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Alicia: Notification Popup Styling */
+.due-notification-box {
+  display: none; 
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px); 
+  -webkit-backdrop-filter: blur(12px);
+  color: #222;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  z-index: 10000; /* Stays on top of the table/header */
+  text-align: center;
+  transition: opacity 0.5s ease;
+}
