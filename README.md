@@ -16,7 +16,7 @@ Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
 ## Features
-- Design for overall app #Kyal
+- Carosell in homepage index.ejs #Kyal
 - Task creation, editing, and deletion (ADDED) #KYAL
 - Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
 - Calendar view for task scheduling (ADDED) #KYAL
@@ -29,7 +29,6 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Mark completed tasks as completed with a tick (ADDED) #Alicia
 
 - A making account feature? (optional)
-- Task completion tick animation (optional)
 - Reoccuring tasks markers (optional)
 - Adding comments when adding tasks, being able to view the comments when you click on the task (optional)
 - An extra filer by school,work etc (optional)
