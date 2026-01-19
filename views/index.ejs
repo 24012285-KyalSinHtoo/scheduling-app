@@ -1,7 +1,6 @@
 <!-- Kyal Sin Htoo -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>Task Dashboard</title>
@@ -10,79 +9,95 @@
 
 <body>
 
-
-  <!-- Search & Priority Filter -->
+  <!-- Search & Filters -->
   <form action="/" method="GET" class="task-search-form">
-    <th style="padding-left: 50px;">Done</th>
-    <input type="text" name="search" placeholder="Search tasks..."
+    <input
+      type="text"
+      name="search"
+      placeholder="Search tasks..."
       value="<%= typeof search !== 'undefined' ? search : '' %>">
 
     <select name="priority">
       <option value="">All Priorities</option>
-      <option value="High" <%=priority==='High' ? 'selected' : '' %>>High</option>
-      <option value="Medium" <%=priority==='Medium' ? 'selected' : '' %>>Medium</option>
-      <option value="Low" <%=priority==='Low' ? 'selected' : '' %>>Low</option>
+      <option value="High" <%= priority === 'High' ? 'selected' : '' %>>High</option>
+      <option value="Medium" <%= priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+      <option value="Low" <%= priority === 'Low' ? 'selected' : '' %>>Low</option>
     </select>
 
-    <input type="date" name="dueDate" value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
+    <input
+      type="date"
+      name="dueDate"
+      value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
 
     <button type="submit">Filter</button>
   </form>
 
-
+  <!-- Header -->
   <header>
     <h1>📋 My Tasks Today</h1>
     <a class="btn" href="/add">+ Add Task</a>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <% if(tasks.length===0){ %>
+    <% if (tasks.length === 0) { %>
       <p>No tasks yet. Add one!</p>
-      <% } else { %>
-        <table>
-          <thead>
-            <tr>
-              <th>Task</th>
-              <th>Priority</th>
-              <th>Due Date</th>
-              <th>Actions</th>
+    <% } else { %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+            <th>Done</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% tasks.forEach(task => { %>
+            <tr class="<%= task.priority.toLowerCase() %>">
+
+              <td><%= task.name %></td>
+
+              <td><%= task.priority %></td>
+
+              <td><%= task.due %></td>
+
+              <td>
+                <a class="edit" href="/edit/<%= task.id %>">Edit</a>
+                <a class="delete" href="/delete/<%= task.id %>">Delete</a>
+              </td>
+
+              <td>
+                <div
+                  class="custom-checkbox"
+                  onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
+
+                  <% if (task.completed) { %>
+                    <span class="tick">✓</span>
+                  <% } %>
+
+                </div>
+              </td>
+
             </tr>
-          </thead>
-          <tbody>
-            <% tasks.forEach(task=> { %>
-              <tr class="<%= task.priority.toLowerCase() %>">
-                <td>
-                  <%= task.name %>
-                </td>
-                <td>
-                  <%= task.priority %>
-                </td>
-                <td>
-                  <%= task.due %>
-                </td>
-                <td>
-                  <a class="edit" href="/edit/<%= task.id %>">Edit</a>
-                  <a class="delete" href="/delete/<%= task.id %>">Delete</a>
-                </td>
-                <td style="padding-left: 50px;">
-                  <div class="custom-checkbox" onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
-                    <% if (task.completed) { %>
-                      <span class="tick">✓</span>
-                      <% } %>
-                  </div>
-                </td>
-              </tr>
-              <% }); %>
-          </tbody>
-        </table>
-        <% } %>
+          <% }); %>
+        </tbody>
+      </table>
+
+    <% } %>
   </main>
 
+  <!-- Bottom Navigation -->
   <nav class="navbar">
     <a href="/calendar" class="nav-item">🗓 Calendar</a>
     <a href="/add" class="nav-add">+</a>
     <a href="/" class="nav-item active">📋 Tasks</a>
   </nav>
+
+  <!-- Completion Modal -->
   <div id="taskCompletionModal" class="modal-overlay">
     <div class="modal-content">
       <h3>Task Completed! 🎉</h3>
@@ -94,7 +109,7 @@
     </div>
   </div>
 
-  <!-- Alicia -->
+  <!-- Script --> <!-- Alicia-->
   <script>
     let activeTaskId = null;
 
@@ -103,7 +118,6 @@
         activeTaskId = taskId;
         document.getElementById('taskCompletionModal').style.display = 'flex';
       } else {
-        // If already checked, clicking un-checks it
         window.location.href = '/complete/' + taskId;
       }
     }
@@ -117,6 +131,6 @@
       document.getElementById('taskCompletionModal').style.display = 'none';
     };
   </script>
-</body>
 
+</body>
 </html>
