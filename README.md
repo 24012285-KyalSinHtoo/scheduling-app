@@ -6,9 +6,9 @@
 # Task delegation
 Backend Features KYAL & ALICIA
 Frontend & UI Integration KYAL & ALICIA
-Test Cases & Automation KADEN (using gitactions)
-CI/CD (Jenkins Automation) HAAD
-Containerisation & Orchestration INDRA & KEIFER (using docker swarm)
+Test Cases & Automation KADEN (using Git Actions)
+CI/CD (Jenkins Automation) HAAD (using Jenkins)
+Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
 
 ## Application Overview
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
