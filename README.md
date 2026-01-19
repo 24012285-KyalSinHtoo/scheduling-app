@@ -15,7 +15,8 @@ Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
 ## Application Overview
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
-## Core Features
+## Features
+- Design for overall app #Kyal
 - Task creation, editing, and deletion (ADDED) #KYAL
 - Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
 - Calendar view for task scheduling (ADDED) #KYAL
