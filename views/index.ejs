@@ -135,12 +135,29 @@
     <button type="submit">Filter</button>
   </form>
 
-  <!-- Task Carousel Header — by Kyal -->
-  <div class="task-carousel">
-    <div class="glass-card carousel-card">
-      <h2>📋 My Tasks</h2>
-    </div>
+  <!-- Task Carousel Section with One Image — Glass + Overlay by Kyal-->
+<div class="task-carousel">
+  <div class="glass-card carousel-card" style="position: relative; overflow: hidden;">
+    <!-- Image -->
+    <img src="https://images.unsplash.com/photo-1422205512921-12dac7b3b603?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhbGxwYXBlciUyMHNwcmluZ3xlbnwwfHwwfHx8MA%3D%3D"
+         alt="Task Image"
+         style="width: 100%; height: 200px; object-fit: cover; display: block;">
+         
+    <!-- Optional Text on Image -->
+    <h2 style="
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2em;
+      background: linear-gradient(45deg, #4caf50, #e91e63);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    ">📋 My Tasks</h2>
   </div>
+</div>
+
+
 
   <!-- Main Task Table Wrapper — by Kyal -->
   <div class="glass-card">
