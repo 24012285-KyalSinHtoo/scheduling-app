@@ -9,12 +9,12 @@ This is a scheduling application designed to help users manage tasks efficiently
 ## Core Features
 - Task creation, editing, and deletion (ADDED) #KYAL
 - Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
-- Alarm / reminder for overdue or incomplete tasks
+- Alarm / reminder for overdue or incomplete tasks #alicia
 - Calendar view for task scheduling (ADDED) #KYAL
 - Daily task view (tasks due today)
 - Task search functionality (ADDED) #KYAL
 - Task filter function (ADDED) #KYAL
-- Mark completed tasks as completed with a tick
+- Mark completed tasks as completed with a tick #alicia
 
 - Nav Bar (ADDED)
 - A making account feature? (optional)
