@@ -7,13 +7,13 @@
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
 ## Core Features
-- Task creation, editing, and deletion (ADDED)
-- Priority markers (High / Medium / Low) with sorting (ADDED)
+- Task creation, editing, and deletion (ADDED) #KYAL
+- Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
 - Alarm / reminder for overdue or incomplete tasks
-- Calendar view for task scheduling (ADDED)
+- Calendar view for task scheduling (ADDED) #KYAL
 - Daily task view (tasks due today)
-- Task search functionality (ADDED)
-- Task filter function (ADDED)
+- Task search functionality (ADDED) #KYAL
+- Task filter function (ADDED) #KYAL
 - Mark completed tasks as completed with a tick
 
 - Nav Bar (ADDED)
@@ -65,4 +65,4 @@ Contains EJS templates for rendering pages:
 - Place for static files such as CSS, client-side JS, and images
 
 
-test
+### NOTE : PUT NAME FOR PARTS WE DID EACH and aldo write task delegation here
