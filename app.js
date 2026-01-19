@@ -101,3 +101,12 @@ app.post('/complete/:id', (req, res) => {
   task.completed = !task.completed;
   res.redirect('/');
 });
+
+// Toggle task completion status
+app.get('/complete/:id', (req, res) => {
+  const task = tasks.find(t => t.id == req.params.id);
+  if (task) {
+    task.completed = !task.completed;
+  }
+  res.redirect('/');
+});
