@@ -21,9 +21,9 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task search functionality (ADDED) #KYAL
 - Task filter function (ADDED) #KYAL
 - Nav Bar (ADDED) #KYAL
-- Overdue tasks section 
+- Overdue tasks section #Kyal
 - Alarm / reminder for overdue or incomplete tasks #Alicia
-- Mark completed tasks as completed with a tick #Alicia
+- Mark completed tasks as completed with a tick (ADDED) #Alicia
 
 - A making account feature? (optional)
 - Task completion tick animation (optional)
