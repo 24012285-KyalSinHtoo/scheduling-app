@@ -1,4 +1,4 @@
-<!-- Kyal Sin Htoo -->
+<!-- Edit Task Page — by Kyal -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,30 +6,152 @@
   <meta charset="UTF-8">
   <title>Edit Task</title>
   <link rel="stylesheet" href="/style.css">
+
+  <!-- Google Fonts / JetBrains Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Body / Page Background */
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, #e0f7fa, #fffde7, #f1f8e9); /* pastel blue, white, yellow */
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Glass Card Wrapper for Form */
+    .glass-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(14px);
+      border-radius: 16px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+    /* Header */
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0288d1; /* pastel blue header */
+    }
+
+    /* Back Button */
+    header .btn {
+      border: 2px solid #ffd54f; /* pastel yellow */
+      padding: 8px 16px;
+      color: #ffd54f;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    header .btn:hover {
+      background: #ffd54f;
+      color: white;
+      box-shadow: 0 6px 20px rgba(255, 213, 79, 0.4);
+    }
+
+    /* Form Labels & Inputs */
+    .task-form label {
+      display: block;
+      font-weight: 600;
+      margin: 15px 0 5px;
+      color: #0288d1;
+    }
+
+    .task-form input,
+    .task-form select {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #b3e5fc; /* light blue border */
+      font-size: 14px;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .task-form input:focus,
+    .task-form select:focus {
+      outline: none;
+      border-color: #0288d1;
+      box-shadow: 0 0 8px rgba(2, 136, 209, 0.3);
+    }
+
+    /* Update Button */
+    .task-form button {
+      width: 100%;
+      border: 2px solid #0288d1;
+      padding: 12px;
+      font-weight: 700;
+      color: #0288d1;
+      border-radius: 8px;
+      background: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .task-form button:hover {
+      background: #0288d1;
+      color: white;
+      box-shadow: 0 6px 20px rgba(2, 136, 209, 0.4);
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 0 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <h1>✏️ Edit Task</h1>
-    <a class="btn" href="/">← Back</a>
-  </header>
   <main>
-    <form action="/edit/<%= task.id %>" method="POST" class="task-form">
-      <label>Task Name</label>
-      <input type="text" name="name" value="<%= task.name %>" required>
+    <header>
+      <h1>Edit Task</h1>
+      <a class="btn" href="/">← Back</a>
+    </header>
 
-      <label>Priority</label>
-      <select name="priority">
-        <option <%=task.priority==='High' ? 'selected' : '' %>>High</option>
-        <option <%=task.priority==='Medium' ? 'selected' : '' %>>Medium</option>
-        <option <%=task.priority==='Low' ? 'selected' : '' %>>Low</option>
-      </select>
+    <div class="glass-card">
+      <form action="/edit/<%= task.id %>" method="POST" class="task-form">
+        <label>Task Name</label>
+        <input type="text" name="name" value="<%= task.name %>" required>
 
-      <label>Due Date</label>
-      <input type="date" name="due" value="<%= task.due %>" required>
+        <label>Priority</label>
+        <select name="priority">
+          <option <%= task.priority === 'High' ? 'selected' : '' %>>High</option>
+          <option <%= task.priority === 'Medium' ? 'selected' : '' %>>Medium</option>
+          <option <%= task.priority === 'Low' ? 'selected' : '' %>>Low</option>
+        </select>
 
-      <button type="submit" class="btn">Update Task</button>
-    </form>
+        <label>Due Date</label>
+        <input type="date" name="due" value="<%= task.due %>" required>
+
+        <button type="submit">Update Task</button>
+      </form>
+    </div>
   </main>
 </body>
 
