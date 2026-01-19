@@ -4,6 +4,8 @@
 - TaskTide
 
 # Task delegation
+Team lead - KYAL
+
 Backend Features KYAL & ALICIA
 Frontend & UI Integration KYAL & ALICIA
 Test Cases & Automation KADEN (using Git Actions)
@@ -16,14 +18,15 @@ This is a scheduling application designed to help users manage tasks efficiently
 ## Core Features
 - Task creation, editing, and deletion (ADDED) #KYAL
 - Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
-- Alarm / reminder for overdue or incomplete tasks #alicia
 - Calendar view for task scheduling (ADDED) #KYAL
 - Daily task view (tasks due today)
 - Task search functionality (ADDED) #KYAL
 - Task filter function (ADDED) #KYAL
-- Mark completed tasks as completed with a tick #alicia
+- Nav Bar (ADDED) #KYAL
+- Overdue tasks section #Kyal
+- Alarm / reminder for overdue or incomplete tasks #Alicia
+- Mark completed tasks as completed with a tick (ADDED) #Alicia
 
-- Nav Bar (ADDED)
 - A making account feature? (optional)
 - Task completion tick animation (optional)
 - Reoccuring tasks markers (optional)
