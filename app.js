@@ -1,7 +1,7 @@
 //Kyal Sin Htoo
 const express = require('express');
 const app = express();
-const port = 3000;
+module.exports = app;
 
 // Parse form data
 app.use(express.urlencoded({ extended: true }));
@@ -58,16 +58,10 @@ app.get('/tasks', (req, res) => {
   res.render('taskList', { tasks: tasks });
 });
 
-app.listen(port, () => {
-  console.log(`App running at http://localhost:${port}`);
-});
-
-
 // Calendar backend
 app.get('/calendar', (req, res) => {
   res.render('calendarView', { tasks: tasks }); // use global tasks array
 });
-
 
 // SEARCH BAR backend
 app.get('/', (req, res) => {
@@ -112,3 +106,5 @@ app.get('/complete/:id', (req, res) => {
   }
   res.redirect('/');
 });
+
+
