@@ -20,13 +20,13 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+        working-directory: scheduling-app
 
       - name: Run tests
         run: npm test
 
-      - name: Install dependencies
-        run: npm ci
-        working-directory: scheduling-app
+    
+    
 
       
         
