@@ -1,14 +1,6 @@
 <script>
   const tasks = [];
 
-  fetch('/api/tasks')
-    .then(response => response.json())
-    .then(data => {
-      tasks.splice(0, tasks.length);
-      data.forEach(task => tasks.push(task));
-      renderCalendar(selectedYear, selectedMonth);
-    });
-
   const monthNames = ["January", "February", "March", "April", "May", "June",
                       "July", "August", "September", "October", "November", "December"];
 
@@ -21,6 +13,15 @@
   const taskDropdown = document.getElementById('taskDropdown');
   const taskList = document.getElementById('taskList');
   const selectedDateEl = document.getElementById('selectedDate');
+
+  function loadTasks() {
+    fetch('/api/tasks')
+      .then(function(response) { return response.json(); })
+      .then(function(data) {
+        tasks.splice(0, tasks.length);
+        data.forEach(function(task) { tasks.push(task); });
+      });
+  }
 
   function renderCalendar(year, month) {
     calendarGrid.innerHTML = '';
@@ -44,6 +45,7 @@
       }
 
       dayCell.addEventListener('click', function() {
+        loadTasks();
         showTasksForDate(year, month, day);
       });
 
@@ -55,6 +57,7 @@
     const monthStr = String(month + 1).padStart(2,'0');
     const dayStr = String(day).padStart(2,'0');
     const dateStr = year + "-" + monthStr + "-" + dayStr;
+
     const tasksForDate = tasks.filter(function(task) { return task.due === dateStr; });
 
     selectedDateEl.textContent = "Tasks for " + dateStr;
@@ -96,5 +99,6 @@
     renderCalendar(selectedYear, selectedMonth);
   });
 
+  loadTasks();
   renderCalendar(selectedYear, selectedMonth);
 </script>
