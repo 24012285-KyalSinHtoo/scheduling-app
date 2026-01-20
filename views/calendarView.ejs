@@ -127,8 +127,10 @@
     </ul>
   </div>
 
+  <div id="task-data" style="display:none"><%= JSON.stringify(tasks) %></div>
+
   <script>
-    const tasks = <%- JSON.stringify(tasks) %>; // pass from server: array of {name, due, priority}
+    const tasks = JSON.parse(document.getElementById('task-data').textContent); // pass from server: array of {name, due, priority}
 
     const monthNames = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"];
