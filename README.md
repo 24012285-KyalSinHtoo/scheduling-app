@@ -27,15 +27,6 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Alarm / reminder for overdue or incomplete tasks #Alicia
 - Mark completed tasks as completed with a tick (ADDED) #Alicia
 
-- A making account feature? (optional)
-- Reoccuring tasks markers (optional)
-- Adding comments when adding tasks, being able to view the comments when you click on the task (optional)
-- An extra filer by school,work etc (optional)
-- Task streaks or points system (optional)
-- Progress bar for the day (optional)
-- Account personalisation (Colour Theme etc) or pfp if i add accounts function
-- Dark Mode (optional) #Alicia
-
 ## CI/CD Overview
 - **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
 - **Pipeline Flow:**
