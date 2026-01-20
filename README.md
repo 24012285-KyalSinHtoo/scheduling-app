@@ -1,7 +1,4 @@
 # Scheduling / To-Do List App with CI/CD for DevOps
-## App Name Ideas
-- TimeKeeper
-- TaskTide
 
 # Task delegation
 Team lead - KYAL
