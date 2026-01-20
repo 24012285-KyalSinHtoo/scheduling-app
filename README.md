@@ -34,7 +34,7 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task streaks or points system (optional)
 - Progress bar for the day (optional)
 - Account personalisation (Colour Theme etc) or pfp if i add accounts function
-- Dark Mode (optional)
+- Dark Mode (optional) #Alicia
 
 ## CI/CD Overview
 - **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
