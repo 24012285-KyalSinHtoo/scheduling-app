@@ -3,7 +3,7 @@
 # Task delegation
 Team lead - KYAL
 Backend Features KYAL & ALICIA
-Frontend & UI Integration KYAL & ALICIA
+Frontend Features KYAL & ALICIA
 Test Cases & Automation KADEN (using Git Actions)
 CI/CD (Jenkins Automation) HAAD (using Jenkins)
 Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
