@@ -23,18 +23,8 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
-  "jest": "^29.0.0",
-  "supertest": "^6.0.0"
-
-  },
-  "name": "tasktide",
-  "version": "1.0.0",
-  "scripts": {
-    "start": "node server.js",
-    "test": "jest"
-  },
-  "scripts": {
-    "test": "npx jest --runInBand"
+    "jest": "^29.0.0",
+    "supertest": "^6.0.0"
   }
 }
 
