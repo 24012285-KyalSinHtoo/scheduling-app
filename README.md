@@ -39,7 +39,7 @@ This is a scheduling application designed to help users manage tasks efficiently
 ## Project Files
 ### `views/` Folder
 Contains EJS templates for rendering pages:
-
+- **`calendarView.ejs`** – Calenderview, press on a date to see that days task
 - **`index.ejs`** – Main dashboard showing task list with edit/delete links
 - **`addTask.ejs`** – Form to add a new task
 - **`editTask.ejs`** – Form to edit an existing task
