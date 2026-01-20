@@ -7,7 +7,7 @@ Frontend & UI Integration KYAL & ALICIA
 Test Cases & Automation KADEN (using Git Actions)
 CI/CD (Jenkins Automation) HAAD (using Jenkins)
 Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
-Deployment Automation using Ansible KYAL 
+Deployment Automation using Ansible KYAL & ALICIA
 
 
 ## Application Overview
