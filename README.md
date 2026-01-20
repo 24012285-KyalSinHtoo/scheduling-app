@@ -7,6 +7,8 @@ Frontend & UI Integration KYAL & ALICIA
 Test Cases & Automation KADEN (using Git Actions)
 CI/CD (Jenkins Automation) HAAD (using Jenkins)
 Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
+Deployment Automation using Ansible KYAL & ALICIA
+
 
 ## Application Overview
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
@@ -19,20 +21,8 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task search functionality (ADDED) #KYAL
 - Task filter function (ADDED) #KYAL
 - Nav Bar (ADDED) #KYAL
-- Overdue tasks section #KYAL
 - Alarm / reminder for overdue or incomplete tasks #Alicia
 - Mark completed tasks as completed with a tick (ADDED) #Alicia
-
-## CI/CD Overview
-- **Tools Used:** GitHub Actions, Jenkins (optional), Docker, Kubernetes / Docker Swarm, GitHub Copilot
-- **Pipeline Flow:**
-  1. Developer pushes code to GitHub
-  2. CI pipeline is triggered
-  3. Dependencies are installed
-  4. Automated tests are executed
-  5. Build is created only if all tests pass
-  6. Docker image is generated
-  7. Application is deployed using orchestration
 
 ## AI-Augmented Tool Usage
 - GitHub Copilot assists with:
