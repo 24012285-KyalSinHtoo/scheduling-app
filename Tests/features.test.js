@@ -12,7 +12,7 @@ expect(res.statusCode).toBe(200);
 
 //Delete task
 it('should delete a task and redirect', async () => {
-//Creating a task
+  //Creating a task
 await request(app)
 .post('/add')
 .send({
@@ -21,10 +21,10 @@ priority: 'High',
 due: '2026-01-20'
 });
 
-//Delete task
+  //Delete task
 const res = await request(app).get('/delete/1');
 
-//Redirect to page
+  //Redirect to page
 expect(res.statusCode).toBe(302);
 expect(res.headers.location).toBe('/');
 });
