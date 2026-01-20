@@ -19,7 +19,7 @@ This is a scheduling application designed to help users manage tasks efficiently
 - Task creation, editing, and deletion (ADDED) #KYAL
 - Priority markers (High / Medium / Low) with sorting (ADDED) #KYAL
 - Calendar view for task scheduling (ADDED) #KYAL
-- Daily task view (tasks due today)
+- Daily task view (tasks due today)#Alicia
 - Task search functionality (ADDED) #KYAL
 - Task filter function (ADDED) #KYAL
 - Nav Bar (ADDED) #KYAL
