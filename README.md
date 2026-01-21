@@ -1,6 +1,7 @@
 # Scheduling / To-Do List App with CI/CD for DevOps
 Team lead - KYAL
 
+
 # Task delegation
 Backend and Frontend Features KYAL & ALICIA
 
@@ -11,6 +12,8 @@ CI/CD Pipeline KYAL (using GitHub Actions)
 Containerisation & Orchestration INDRA & KIEFER (using Dpcker & Docker swarm)
 
 Deployment Automation HAAD & ALICIA (using Ansible)
+
+
 
 ## Application Overview
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
