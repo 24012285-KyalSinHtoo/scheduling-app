@@ -8,7 +8,6 @@ CI/CD Pipeline KYAL (using Git Actions)
 Containerisation & Orchestration INDRA & KEIFER (using Docker swarm)
 Deployment Automation using Ansible HAAD & ALICIA
 
-
 ## Application Overview
 This is a scheduling application designed to help users manage tasks efficiently. It is developed using Express.js and EJS templates, and demonstrates the use of CI/CD practices in DevOps workflows.
 
@@ -28,12 +27,6 @@ This is a scheduling application designed to help users manage tasks efficiently
   - Generating boilerplate code
   - Reducing syntax and logic errors
 - Accelerates development and supports continuous integration
-
-## Strategy
-- Features divided based on expertise
-- All code changes must pass CI checks before merging
-- Regular pull request reviews ensure code quality
-- Encourages collaboration, accountability, and reduces merge conflicts
 
 ## Project Files
 ### `views/` Folder
