@@ -46,3 +46,7 @@ expect(res.statusCode).toBe(200);
 //Search bar
 
 //Marking tasks complete
+
+//Invalid input
+
+//Invalid route
