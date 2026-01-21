@@ -19,6 +19,9 @@ let tasks = [
   { id: 2, name: "Finish homework", priority: "Medium", due: "2026-01-20" }
 ];
 
+//const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+
 // Add task page
 app.get('/add', (req, res) => {
   res.render('addTask');
@@ -75,7 +78,7 @@ app.get('/calendar', (req, res) => {
 app.get('/', (req, res) => {
   let { search, priority, dueDate } = req.query;
 
-  let filteredTasks = tasks; // tasks is your array or database result
+  let filteredTasks = tasks;
 
   if (search) {
     filteredTasks = filteredTasks.filter(task =>
@@ -95,8 +98,13 @@ app.get('/', (req, res) => {
     );
   }
 
+  filteredTasks = filteredTasks.slice().sort((a, b) => {
+    return priorityOrder[a.priority] - priorityOrder[b.priority];
+  });
+
   res.render('index', { tasks: filteredTasks, search, priority, dueDate });
 });
+
 
 //Alicia
 //Mark completed tasks as completed with a tick
