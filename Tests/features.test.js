@@ -9,6 +9,11 @@ expect(res.statusCode).toBe(200);
 });
 
 //Edit task
+it('should load edit task page', async () => {
+const testTaskId = 1;
+const res = await request(app).get(`/edit/${testTaskId}`);
+expect(res.statusCode).toBe(200);
+});
 
 //Delete task
 it('should delete a task and redirect', async () => {
