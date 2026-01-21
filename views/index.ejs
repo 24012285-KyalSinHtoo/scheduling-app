@@ -182,13 +182,15 @@
 
                 <!-- Completion Checkbox — by Alicia -->
                 <td>
-                  <div class="custom-checkbox data-id="<%= task.id %>"
+                  <div class="custom-checkbox"
+                       data-id="<%= task.id %>"
                        data-completed="<%= task.completed ? 'true' : 'false' %>">
                     <% if (task.completed) { %>
                       <span class="tick">✓</span>
                     <% } %>
                   </div>
                 </td>
+
               </tr>
             <% }); %>
           </tbody>
@@ -218,7 +220,7 @@
     </div>
   </div>
 
-  <!-- Hidden JSON data  — by Kyal -->
+  <!-- Hidden JSON data — by Kyal -->
   <div id="task-data" style="display:none"><%- JSON.stringify(tasks) %></div>
 
   <!-- Script (Modal + Complete logic) — Alicia -->
@@ -242,13 +244,24 @@
       window.location.href = '/complete/' + activeTaskId;
       document.getElementById('taskCompletionModal').style.display = 'none';
     };
+
+    // Bind clicks to checkboxes (no EJS in onclick) — by Kyal
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.custom-checkbox').forEach(function (box) {
+        box.addEventListener('click', function () {
+          const taskId = this.getAttribute('data-id');
+          const isCompleted = this.getAttribute('data-completed') === 'true';
+          handleTaskCheck(taskId, isCompleted);
+        });
+      });
+    });
   </script>
 
   <div id="dueReminderPopup" class="due-notification-box">
     <span id="reminderText"></span>
   </div>
 
-  <!-- Alicia's pop-up notification -->
+  <!-- Alicia's pop-up notification (Calendar technique) -->
   <script>
     function closeReminderAlicia() {
       const popup = document.getElementById('dueReminderPopup');
@@ -262,7 +275,6 @@
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
-      // Read tasks safely from hidden JSON block
       const tasksFromBackend = JSON.parse(document.getElementById('task-data').textContent);
 
       const overdueTasks = tasksFromBackend.filter(t => {
