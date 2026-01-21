@@ -20,7 +20,6 @@
       background: linear-gradient(135deg, #fce4ec, #e8f5e9);
     }
 
-
     /* Glass Card Base Styling — by Kyal */
     .glass-card {
       background: rgba(255, 255, 255, 0.45);
@@ -82,7 +81,6 @@
       color: white;
     }
 
-
     /* Bottom Navigation Styling — by Kyal */
     .navbar a {
       border: 2px solid transparent;
@@ -106,13 +104,6 @@
       justify-content: center;
       text-align: center;
     }
-
-    .carousel-card h2 {
-      font-size: 2em;
-      background: linear-gradient(45deg, #4caf50, #e91e63);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
   </style>
 </head>
 
@@ -125,9 +116,9 @@
 
     <select name="priority">
       <option value="">All Priorities</option>
-      <option value="High" <%=priority==='High' ? 'selected' : '' %>>High</option>
-      <option value="Medium" <%=priority==='Medium' ? 'selected' : '' %>>Medium</option>
-      <option value="Low" <%=priority==='Low' ? 'selected' : '' %>>Low</option>
+      <option value="High" <%= priority==='High' ? 'selected' : '' %>>High</option>
+      <option value="Medium" <%= priority==='Medium' ? 'selected' : '' %>>Medium</option>
+      <option value="Low" <%= priority==='Low' ? 'selected' : '' %>>Low</option>
     </select>
 
     <input type="date" name="dueDate" value="<%= typeof dueDate !== 'undefined' ? dueDate : '' %>">
@@ -135,36 +126,32 @@
     <button type="submit">Filter</button>
   </form>
 
-  <!-- Task Carousel Section with One Image — Glass + Overlay by Kyal-->
-<div class="task-carousel">
-  <div class="glass-card carousel-card" style="position: relative; overflow: hidden;">
-    <!-- Image -->
-    <img src="https://images.unsplash.com/photo-1422205512921-12dac7b3b603?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhbGxwYXBlciUyMHNwcmluZ3xlbnwwfHwwfHx8MA%3D%3D"
-         alt="Task Image"
-         style="width: 100%; height: 200px; object-fit: cover; display: block;">
-         
-    <!-- Optional Text on Image -->
-    <h2 style="
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 2em;
-      background: linear-gradient(45deg, #4caf50, #e91e63);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    ">📋 My Tasks</h2>
+  <!-- Task Carousel Section with Text Only — by Kyal -->
+  <div class="task-carousel">
+    <div class="glass-card carousel-card" style="position: relative; overflow: hidden;">
+      <img
+        src="https://images.unsplash.com/photo-1422205512921-12dac7b3b603?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhbGxwYXBlciUyMHNwcmluZ3xlbnwwfHwwfHx8MA%3D%3D"
+        alt="Task Image"
+        style="width: 100%; height: 200px; object-fit: cover; display: block;">
+
+      <!-- Plain text overlay -->
+      <h2 style="
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        margin: 0;
+      ">📋 My Tasks</h2>
+    </div>
   </div>
-</div>
-
-
 
   <!-- Main Task Table Wrapper — by Kyal -->
   <div class="glass-card">
 
     <!-- Main Content Area — by Kyal -->
     <main>
-      <% if (tasks.length===0) { %>
+      <% if (tasks.length === 0) { %>
         <p>No tasks yet. Add one!</p>
       <% } else { %>
 
@@ -181,9 +168,8 @@
           </thead>
 
           <tbody>
-            <% tasks.forEach(task=> { %>
+            <% tasks.forEach(task => { %>
               <tr class="<%= task.priority.toLowerCase() %>">
-
                 <td><%= task.name %></td>
                 <td><%= task.priority %></td>
                 <td><%= task.due %></td>
@@ -196,13 +182,13 @@
 
                 <!-- Completion Checkbox — by Alicia -->
                 <td>
-                  <div class="custom-checkbox" onclick="handleTaskCheck('<%= task.id %>', <%= task.completed %>)">
+                  <div class="custom-checkbox data-id="<%= task.id %>"
+                       data-completed="<%= task.completed ? 'true' : 'false' %>">
                     <% if (task.completed) { %>
                       <span class="tick">✓</span>
                     <% } %>
                   </div>
                 </td>
-
               </tr>
             <% }); %>
           </tbody>
@@ -213,14 +199,12 @@
 
   </div>
 
-  
   <!-- Bottom Navigation Bar — by Kyal -->
   <nav class="navbar">
     <a href="/calendar" class="nav-item">🗓 Calendar</a>
     <a href="/add" class="nav-add">+</a>
     <a href="/" class="nav-item active">📋 Tasks</a>
   </nav>
-
 
   <!-- Task Completion Confirmation Modal — by Alicia -->
   <div id="taskCompletionModal" class="modal-overlay">
@@ -234,7 +218,10 @@
     </div>
   </div>
 
-  <!-- Script --> <!-- Alicia-->
+  <!-- Hidden JSON data  — by Kyal -->
+  <div id="task-data" style="display:none"><%- JSON.stringify(tasks) %></div>
+
+  <!-- Script (Modal + Complete logic) — Alicia -->
   <script>
     let activeTaskId = null;
 
@@ -275,25 +262,20 @@
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
-      const tasksFromBackend = [
-        <% tasks.forEach(task => { %>
-          { 
-            name: "<%= task.name %>", 
-            due: "<%= task.due %>", 
-            completed: <%= task.completed ? 'true' : 'false' %> 
-          },
-        <% }); %>
-      ];
+      // Read tasks safely from hidden JSON block
+      const tasksFromBackend = JSON.parse(document.getElementById('task-data').textContent);
 
       const overdueTasks = tasksFromBackend.filter(t => {
+        if (t.completed) return false;
         const taskDueDate = new Date(t.due);
         taskDueDate.setHours(0, 0, 0, 0);
-        return !t.completed && taskDueDate < today;
+        return taskDueDate < today;
       });
 
       if (overdueTasks.length > 0) {
         const popup = document.getElementById('dueReminderPopup');
         const textSpan = document.getElementById('reminderText');
+
         const taskNames = overdueTasks.map(t => t.name).join(", ");
         textSpan.innerText = "Reminder: " + taskNames + " is incomplete, get it done soon!";
         popup.style.display = 'block';
