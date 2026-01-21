@@ -2,7 +2,6 @@
 const express = require('express');
 const app = express();
 const task = [];
-const priority = [];
 module.exports = app;
 
 // Parse form data
