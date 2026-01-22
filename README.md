@@ -3,15 +3,15 @@ Team lead - KYAL
 
 
 # Task delegation
-Backend and Frontend Features KYAL & ALICIA
+Backend and Frontend Features _ KYAL & ALICIA
 
-Test Cases & Automation KADEN and KYAL assisted in a few tests (using Jest & Supertest - executed via github actions)
+Automated test cases _ KADEN and KYAL assisted in a few tests (using Jest & Supertest - executed via github actions)
 
-CI/CD Pipeline KYAL (using GitHub Actions)
+CI/CD pipeline automation & enforcement _ KYAL (using GitHub Actions)
 
-Containerisation & Orchestration INDRA & KIEFER (using Dpcker & Docker swarm)
+Containerisation & Orchestration _ INDRA & KIEFER (using Dpcker & Docker swarm)
 
-Deployment Automation HAAD & ALICIA (using Ansible)
+Deployment Automation _ HAAD & ALICIA (using Ansible)
 
 
 
