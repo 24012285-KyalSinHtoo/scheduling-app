@@ -1,32 +1,43 @@
 #Kaden
-name: Node.js CI
+# CI/CD pipeline by Kyal (Team 2)
+
+name: CI – Test Scheduling App
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
+    name: Install & Run Tests (Jest/Supertest)
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run automated tests
         run: npm test
 
-    
-    
+      - name: Build-ready confirmation
+        run: echo "Tests passed. Code is safe for Docker image build by Indra/Keifer."
 
       
         
