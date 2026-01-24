@@ -1,15 +1,15 @@
 # Contributing Guidelines
 
-Maintained by: Kyal (CI/CD & repo process)
+Maintained by: Kyal (CI/CD & Repository Process)
 
-## Before contributing
-- Run `npm install`
-- Run `npm test`
+## Before Contributing
+- Install dependencies using `npm install`
+- Run automated tests using `npm test`
 
-## Branching
-- Create feature branches
-- Do not push directly to `main`
+## Branching Strategy
+- Create feature branches for changes
+- Direct pushes to `main` are not allowed
 
 ## Pull Requests
-- CI must pass
-- 1 approval required before merge
+- All CI checks must pass
+- At least 1 approving review is required before merging
